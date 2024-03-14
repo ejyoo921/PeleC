@@ -350,13 +350,21 @@ initialize_EB2(
 
   // Custom types defined here - all_regular, plane, sphere, etc, will get
   // picked up by default (see AMReX_EB2.cpp around L100 )
+  // EY: Added STL in AMReX defaults --
   amrex::Vector<std::string> amrex_defaults(
-    {"all_regular", "box", "cylinder", "plane", "sphere", "torus", "parser"});
+    {"all_regular", "box", "cylinder", "plane", "sphere", "torus", "parser", "stl"});
   if (!(std::find(amrex_defaults.begin(), amrex_defaults.end(), geom_type) !=
         amrex_defaults.end())) {
     std::unique_ptr<pele::pelec::Geometry> geometry(
       pele::pelec::Geometry::create(geom_type));
     geometry->build(geom, max_coarsening_level + coarsening);
+
+    // EY: This is something "to do" for IndexSpace_STL.
+    if (geom_type == "stl")
+    {
+      AMREX_ASSERT(max_level == eb_max_level);
+    }
+    // find where this eb_max_level is defined
   } else {
     amrex::EB2::Build(
       geom, max_coarsening_level + coarsening,
@@ -365,6 +373,8 @@ initialize_EB2(
 
   // Add finer level, might be inconsistent with the coarser level created
   // above.
+  // EY: Let's not do this for now with stl geometry --
+  // && geom_type != "stl"
   if (geom_type != "chkfile") {
     amrex::EB2::addFineLevels(max_level - eb_max_level);
   }
