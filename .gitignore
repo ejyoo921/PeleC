@@ -34,4 +34,7 @@ Docs/html/
 Docs/sphinx/doctrees/
 Docs/sphinx_doc/
 
+// EY:
+**/*.0 
+
 __pycache__
