@@ -362,6 +362,7 @@ initialize_EB2(
     // EY: This is something "to do" for IndexSpace_STL.
     if (geom_type == "stl")
     {
+      amrex::Print() << "eb_max_level = " << eb_max_level << "\n";
       AMREX_ASSERT(max_level == eb_max_level);
     }
     // find where this eb_max_level is defined
@@ -375,7 +376,7 @@ initialize_EB2(
   // above.
   // EY: Let's not do this for now with stl geometry --
   // && geom_type != "stl"
-  if (geom_type != "chkfile") {
+  if (geom_type != "chkfile" && geom_type != "stl") {
     amrex::EB2::addFineLevels(max_level - eb_max_level);
   }
 
