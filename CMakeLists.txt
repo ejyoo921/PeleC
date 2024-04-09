@@ -73,8 +73,7 @@ endif()
 ########################### AMReX #####################################
 
 message(STATUS "AMReX Configure Section")
-# set(AMREX_SUBMOD_LOCATION "${CMAKE_SOURCE_DIR}/Submodules/PelePhysics/Submodules/amrex")
-set(AMREX_SUBMOD_LOCATION "${CMAKE_SOURCE_DIR}/Submodules/../../../../amrex")
+set(AMREX_SUBMOD_LOCATION "${CMAKE_SOURCE_DIR}/Submodules/PelePhysics/Submodules/amrex")
 include(SetAmrexOptions)
 list(APPEND CMAKE_MODULE_PATH "${AMREX_SUBMOD_LOCATION}/Tools/CMake")
 add_subdirectory(${AMREX_SUBMOD_LOCATION})
