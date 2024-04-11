@@ -36,5 +36,6 @@ Docs/sphinx_doc/
 
 // EY:
 **/*.0 
-
+**/paraview*
+**/*data*
 __pycache__
