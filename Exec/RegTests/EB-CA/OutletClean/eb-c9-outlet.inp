@@ -5,9 +5,9 @@ stop_time = 0.0625e-2
 # PROBLEM SIZE & GEOMETRY
 geometry.is_periodic =  1  0  0
 geometry.coord_sys   =  0       # 0 => cart
-geometry.prob_lo     =   -300.0   -300.0   -600.0
-geometry.prob_hi     =      300.0  300.0    0.0
-amr.n_cell           =    128  128  128
+geometry.prob_lo     =   -50.0   -50.0   -490.0
+geometry.prob_hi     =    50.0    50.0   -90.0
+amr.n_cell           =    64    64     256
 
 
 # ------------------GEOMETRY--------------------------------
