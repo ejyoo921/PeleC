@@ -5,13 +5,12 @@ stop_time = 0.0625e-2
 # PROBLEM SIZE & GEOMETRY
 geometry.is_periodic =  1  0  0
 geometry.coord_sys   =  0       # 0 => cart
-geometry.prob_lo     =   -700.0   -100.0   -150.0
-geometry.prob_hi     =   -100.0    200.0    150.0
-amr.n_cell           =    256      128      128
-
+geometry.prob_lo     =   -300.0   -300.0   -600.0
+geometry.prob_hi     =    300.0    300.0    0.0
+amr.n_cell           =    128   128   128
 # ------------------GEOMETRY--------------------------------
 eb2.geom_type = stl
-eb2.stl_file    = InletClean.stl
+eb2.stl_file    = OutletClean.stl
 eb2.stl_scale = 1                 # default is 1
 eb2.stl_center = 0  0  0  # default is (0,0,0)
 eb2.stl_reverse_normal = 1   # default is 0
