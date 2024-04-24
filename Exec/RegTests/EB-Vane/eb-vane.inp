@@ -1,13 +1,13 @@
 # ------------------  INPUTS TO MAIN PROGRAM  -------------------
-max_step = 300
-stop_time = 6.0
+max_step = 3000
+stop_time = 10.0
 
 # PROBLEM SIZE & GEOMETRY
 geometry.is_periodic =  0   0  1
 geometry.coord_sys   =  0       # 0 => cart
 geometry.prob_lo     =  -16.0   -16.0   -2.0
 geometry.prob_hi     =   16.0    16.0    2.0
-amr.n_cell           =   256   256   32
+amr.n_cell           =   256     256     32
 
 # ------------------GEOMETRY--------------------------------
 eb2.geom_type = stl
@@ -46,8 +46,8 @@ pelec.diffuse_enth = 1
 # TIME STEP CONTROL
 pelec.dt_cutoff      = 5.e-20  # level 0 timestep below which we halt
 pelec.cfl            = 0.1     # cfl number for hyperbolic system
-pelec.init_shrink    = 0.8    # scale back initial timestep
-pelec.change_max     = 1.05     # maximum increase in dt over successive steps
+pelec.init_shrink    = 0.8     # scale back initial timestep
+pelec.change_max     = 1.05    # maximum increase in dt over successive steps
 
 # DIAGNOSTICS & VERBOSITY
 pelec.sum_interval   = 1       # timesteps between computing mass
@@ -63,9 +63,10 @@ amr.blocking_factor = 8       # block factor in grid generation
 amr.max_grid_size   = 32
 
 # CHECKPOINT FILES
-amr.checkpoint_files_output = 0
-amr.check_file      = chk      # root name of checkpoint file
-amr.check_int       = -1       # number of timesteps between checkpoints
+amr.checkpoint_files_output = 1
+amr.check_file      = chk         # root name of checkpoint file
+amr.check_int       = 10          # number of timesteps between checkpoints
+amr.restart         = "chk00300"  # Checkpoint to restart from 
 
 # PLOTFILES
 amr.plot_files_output = 1
