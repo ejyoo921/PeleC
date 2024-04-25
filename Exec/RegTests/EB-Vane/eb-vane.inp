@@ -66,7 +66,7 @@ amr.max_grid_size   = 32
 amr.checkpoint_files_output = 1
 amr.check_file      = chk         # root name of checkpoint file
 amr.check_int       = 10          # number of timesteps between checkpoints
-amr.restart         = "chk00300"  # Checkpoint to restart from 
+#amr.restart         = "chk00300"  # Checkpoint to restart from 
 
 # PLOTFILES
 amr.plot_files_output = 1
