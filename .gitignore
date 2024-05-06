@@ -39,3 +39,6 @@ Docs/sphinx_doc/
 **/paraview*
 **/*data*
 __pycache__
+**/Backtrace.*
+**/*out
+**/*.sh

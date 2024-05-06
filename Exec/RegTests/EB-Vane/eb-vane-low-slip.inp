@@ -1,0 +1,99 @@
+# ------------------  INPUTS TO MAIN PROGRAM  -------------------
+max_step = 3000
+stop_time = 10.0
+
+# PROBLEM SIZE & GEOMETRY
+geometry.is_periodic =  0   0   0
+geometry.coord_sys   =  0       # 0 => cart
+geometry.prob_lo     =  -16     -16     -1.0
+geometry.prob_hi     =   16      16     -0.0
+amr.n_cell           =   256      256    8
+
+# ------------------GEOMETRY--------------------------------
+
+eb2.geom_type = stl
+eb2.stl_file    = TE_vane.stl
+eb2.stl_scale = 0.3                 # default is 1
+eb2.stl_center = 0  0  0            # default is (0,0,0)
+eb2.stl_reverse_normal = 0          # default is 0
+
+# Additional for a covered cell
+ebd.boundary_grad_stencil_type = 1
+
+# Store EB geometry for future use
+eb2.write_chk_geom=1                # defaults to 0
+eb2.chkfile="chk_geom_vane03"       # optional, defaults to "chk_geom"
+
+# Read EB geometry file
+# eb2.geom_type="chkfile"
+# eb2.chkfile="chk_geom_vane03"        # optional, defaults to "chk_geom"
+
+# Must match the max_grid_size 
+# used to generate the EB in the first place
+# eb2.max_grid_size=32                 # optional, defaults to 64
+# --------------------------------------------------------
+
+# >>>>>>>>>>>>>  BC KEYWORDS <<<<<<<<<<<<<<<<<<<<<<
+# Interior, UserBC, Symmetry, SlipWall, NoSlipWall
+# >>>>>>>>>>>>>  BC KEYWORDS <<<<<<<<<<<<<<<<<<<<<<
+
+#pelec.lo_bc       =  "FOExtrap" "FOExtrap" "Interior"
+#pelec.hi_bc       =  "FOExtrap" "FOExtrap" "Interior"
+
+pelec.lo_bc       =  "UserBC" "UserBC" "SlipWall"
+pelec.hi_bc       =  "UserBC" "UserBC" "SlipWall"
+
+# Problem setup
+pelec.eb_boundary_T = 300.
+pelec.eb_isothermal = 1
+
+# WHICH PHYSICS
+pelec.do_hydro = 1
+pelec.do_mol = 1
+pelec.do_react = 0
+pelec.diffuse_temp = 1
+pelec.diffuse_vel  = 1
+pelec.diffuse_spec = 0
+pelec.diffuse_enth = 1
+
+# TIME STEP CONTROL
+pelec.dt_cutoff      = 5.e-20  # level 0 timestep below which we halt
+pelec.cfl            = 0.1     # cfl number for hyperbolic system
+pelec.init_shrink    = 0.8     # scale back initial timestep
+pelec.change_max     = 1.05    # maximum increase in dt over successive steps
+
+# DIAGNOSTICS & VERBOSITY
+pelec.sum_interval   = 1       # timesteps between computing mass
+pelec.v              = 1       # verbosity in PeleC cpp files
+amr.v                = 1       # verbosity in Amr.cpp
+#amr.grid_log         = grdlog  # name of grid logging file
+
+# REFINEMENT / REGRIDDING
+amr.max_level       = 0       # maximum level number allowed
+#amr.ref_ratio       = 2 2 2 2 # refinement ratio
+#amr.regrid_int      = 2       # how often to regrid
+amr.blocking_factor = 8       # block factor in grid generation
+amr.max_grid_size   = 32
+
+# CHECKPOINT FILES
+amr.checkpoint_files_output = 1
+amr.check_file      = chk         # root name of checkpoint file
+amr.check_int       = 100          # number of timesteps between checkpoints
+#amr.restart         = "chk00300"  # Checkpoint to restart from 
+
+# PLOTFILES
+amr.plot_files_output = 1
+amr.plot_file       = plt
+amr.plot_int        = 10
+amr.derive_plot_vars=ALL
+
+# Problem Type
+prob.p = 1013250.0
+prob.T = 300.0
+prob.source_radius = 4.0
+prob.source_strength = 20.0
+pelec.add_ext_src = 1
+
+transport.const_conductivity = 0.0
+transport.const_viscosity = 0.0
+
