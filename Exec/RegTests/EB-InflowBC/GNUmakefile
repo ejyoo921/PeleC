@@ -12,7 +12,7 @@ MEM_PROFILE = FALSE
 USE_GPROF = FALSE
 
 # Performance
-USE_MPI = FALSE
+USE_MPI = TRUE
 USE_OMP = FALSE
 USE_CUDA = FALSE
 USE_HIP = FALSE
@@ -27,16 +27,9 @@ THREAD_SANITIZER = FALSE
 PELE_CVODE_FORCE_YCORDER = FALSE
 PELE_USE_MAGMA = FALSE
 PELE_COMPILE_AJACOBIAN = FALSE
-USE_EXPLICIT_REACT = TRUE
-ifeq ($(USE_EXPLICIT_REACT), TRUE)
 Eos_Model := Fuego
-Chemistry_Model := LiDryer
 Transport_Model := Simple
-else
-Eos_Model := GammaLaw
-Chemistry_Model := Null
-Transport_Model := Constant
-endif
+Chemistry_Model := air
 
 # GNU Make
 Bpack := ./Make.package
