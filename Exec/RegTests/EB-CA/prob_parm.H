@@ -16,6 +16,11 @@ struct ProbParmDevice
   amrex::Real radius = 0.0;
   amrex::Real L = 0.0;
   amrex::GpuArray<amrex::Real, NUM_SPECIES> massfrac = {1.0};
+  
+  //EY
+  amrex::Real aoveras_in = 0.0;
+  amrex::Real aoveras_out = 0.0;
+  int geom_type = 0;
 };
 
 struct ProbParmHost

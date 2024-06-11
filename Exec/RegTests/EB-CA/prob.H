@@ -19,6 +19,25 @@
 #include "ProblemSpecificFunctions.H"
 #include "prob_parm.H"
 
+// EY: for creating an EB geometry
+#include "EB.H"
+#include <AMReX_EB2_IF_Rotation.H>
+#include "Utilities.H"
+#include "Geometry.H"
+
+// EY: 
+void parse_params(std::unique_ptr<ProbParmDevice>& prob_parm_device, const amrex::Real* problo, const amrex::Real* probhi);
+
+class EBco2snowInlet
+  : public pele::pelec::Geometry::Register<EBco2snowInlet>
+{
+public:
+  static std::string identifier() { return "co2snow-inlet"; }
+
+  void
+  build(const amrex::Geometry& geom, const int max_coarsening_level) override;
+};
+
 AMREX_GPU_DEVICE
 AMREX_FORCE_INLINE
 void
@@ -61,6 +80,13 @@ pc_initdata(
   for (int n = 0; n < NUM_SPECIES; n++) {
     state(i, j, k, UFS + n) = rho * prob_parm.massfrac[n];
   }
+
+  //EY: for EB lathe
+  // Get A/As
+  // amrex::Real AoverAs = define_nozzle_shape(x, prob_parm.throat_height, prob_parm.nozzle_type) / (0.5*prob_parm.throat_height);
+  amrex::Real AoverAs = (x > 0) ?
+    x / geomdata.ProbHi(0) * (prob_parm.aoveras_out - 1.0) + 1.0
+    : x / geomdata.ProbLo(0) * (prob_parm.aoveras_in - 1.0) + 1.0;
 }
 
 AMREX_GPU_DEVICE
