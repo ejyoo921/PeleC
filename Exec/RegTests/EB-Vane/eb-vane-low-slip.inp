@@ -5,9 +5,9 @@ stop_time = 10.0
 # PROBLEM SIZE & GEOMETRY
 geometry.is_periodic =  0   0   0
 geometry.coord_sys   =  0       # 0 => cart
-geometry.prob_lo     =  -16     -16     -1.1
-geometry.prob_hi     =   16      16     -0.1
-amr.n_cell           =   256      256    8
+geometry.prob_lo     =  -16     -16     -1.0
+geometry.prob_hi     =   16      16     -0.5
+amr.n_cell           =   512     512     8
 
 # ------------------GEOMETRY--------------------------------
 
@@ -25,12 +25,12 @@ eb2.write_chk_geom=1                # defaults to 0
 eb2.chkfile="chk_geom_vane03"       # optional, defaults to "chk_geom"
 
 # Read EB geometry file
-# eb2.geom_type="chkfile"
-# eb2.chkfile="chk_geom_vane03"        # optional, defaults to "chk_geom"
+eb2.geom_type="chkfile"
+eb2.chkfile="chk_geom_vane03"        # optional, defaults to "chk_geom"
 
 # Must match the max_grid_size 
 # used to generate the EB in the first place
-# eb2.max_grid_size=32                 # optional, defaults to 64
+eb2.max_grid_size=32                 # optional, defaults to 64
 # --------------------------------------------------------
 
 # >>>>>>>>>>>>>  BC KEYWORDS <<<<<<<<<<<<<<<<<<<<<<
