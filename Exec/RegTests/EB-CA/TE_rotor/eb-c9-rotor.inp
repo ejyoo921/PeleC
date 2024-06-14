@@ -5,9 +5,9 @@ stop_time = 0.0625e-2
 # PROBLEM SIZE & GEOMETRY
 geometry.is_periodic =  1  0  0
 geometry.coord_sys   =  0       # 0 => cart
-geometry.prob_lo     =   -35.0   -35.0   -30.0
-geometry.prob_hi     =    35.0    35.0    5.0
-amr.n_cell           =    128     128     64
+geometry.prob_lo     =   -10.0   -10.0    0.0
+geometry.prob_hi     =    80.0    80.0    45.0
+amr.n_cell           =    512    512      256
 # ------------------GEOMETRY--------------------------------
 eb2.geom_type = stl
 eb2.stl_file    = TE_rotor.stl
@@ -17,6 +17,10 @@ eb2.stl_reverse_normal = 1   # default is 0
 
 # Additional for a covered cell
 ebd.boundary_grad_stencil_type = 1
+
+# save EB geometry for future loading
+eb2.write_chk_geom = 1   # defaults to 0
+eb2.chkfile="chk_geom_rotor" # optional, defaults to "chk_geom"
 # --------------------------------------------------------
 
 # >>>>>>>>>>>>>  BC KEYWORDS <<<<<<<<<<<<<<<<<<<<<<
