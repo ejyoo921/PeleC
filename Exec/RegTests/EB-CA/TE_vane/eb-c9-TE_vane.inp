@@ -16,6 +16,10 @@ eb2.stl_scale = 1                 # default is 1
 eb2.stl_center = 0  0  0  # default is (0,0,0)
 eb2.stl_reverse_normal = 1   # default is 0
 
+# save EB geometry for future loading
+eb2.write_chk_geom = 1   # defaults to 0
+eb2.chkfile="chk_geom_vane" # optional, defaults to "chk_geom"
+
 # Additional for a covered cell
 ebd.boundary_grad_stencil_type = 1
 # --------------------------------------------------------

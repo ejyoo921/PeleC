@@ -1,7 +1,7 @@
 PELE_HOME        ?= ../
 PELE_PHYSICS_HOME ?= $(abspath $(lastword $(PELE_HOME)/Submodules/PelePhysics))
 #AMREX_HOME        ?= $(abspath $(lastword $(PELE_PHYSICS_HOME)/Submodules/amrex))
-AMREX_HOME        ?= ~/NREL_packages/amrex
+AMREX_HOME        ?= /projects/co2snow/eyoo/amrex
 SUNDIALS_HOME     ?= $(abspath $(lastword $(PELE_PHYSICS_HOME)/Submodules/sundials))
 
 EBASE = PeleC
