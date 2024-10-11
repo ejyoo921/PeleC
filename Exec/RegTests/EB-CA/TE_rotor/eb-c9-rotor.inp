@@ -1,26 +1,33 @@
+#------------------------- RESTART --------------------------------
+amr.restart             =   "chk00600"  # Checkpoint to restart from 
+#eb2.geom_type           =   "chk_geom_rotor" # Read saved EB geometry
 # ------------------  INPUTS TO MAIN PROGRAM  -------------------
-max_step = 100
-stop_time = 0.0625e-2
+max_step = 10000
+stop_time = -1
 
 # PROBLEM SIZE & GEOMETRY
 geometry.is_periodic =  1  0  0
 geometry.coord_sys   =  0       # 0 => cart
-geometry.prob_lo     =   0.0     0.0    0.0
-geometry.prob_hi     =  45.0    45.0    45.0
-amr.n_cell           =    256    256      256
+geometry.prob_lo     =   0.0     0.0     0.0
+geometry.prob_hi     =   80.0    80.0    80.0
+amr.n_cell           =   512     512     512
 # ------------------GEOMETRY--------------------------------
 eb2.geom_type = stl
-eb2.stl_file    = CA_Impel_Segment.stl
+eb2.stl_file    = ImpellerDefeatured.stl
 eb2.stl_scale = 1                 # default is 1
 eb2.stl_center = 0  0  0  # default is (0,0,0)
 eb2.stl_reverse_normal = 1   # default is 0
+
+#eb2.plt_multiple_cuts = "true"
+eb2.cover_multiple_cuts = "true"
 
 # Additional for a covered cell
 ebd.boundary_grad_stencil_type = 1
 
 # save EB geometry for future loading
-eb2.write_chk_geom = 1   # defaults to 0
+#eb2.write_chk_geom = 1   # defaults to 0
 eb2.chkfile="chk_geom_rotor" # optional, defaults to "chk_geom"
+eb2.geom_type           =   "chk_geom_rotor" # Read saved EB geometry
 # --------------------------------------------------------
 
 # >>>>>>>>>>>>>  BC KEYWORDS <<<<<<<<<<<<<<<<<<<<<<
@@ -72,5 +79,5 @@ amr.check_int       = 100      # number of timesteps between checkpoints
 # PLOTFILES
 amr.plot_files_output = 1
 amr.plot_file       = plt
-amr.plot_int        = 1000
+amr.plot_int        = 100
 amr.derive_plot_vars=ALL
