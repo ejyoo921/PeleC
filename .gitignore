@@ -42,3 +42,4 @@ __pycache__
 **/Backtrace.*
 **/*out
 **/*.sh
+**/TE_rotor_submodule-local/
