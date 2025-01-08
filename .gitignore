@@ -43,3 +43,4 @@ __pycache__
 **/*out
 **/*.sh
 **/TE_rotor_submodule-local/
+**/*.npz
