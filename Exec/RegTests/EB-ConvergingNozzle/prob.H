@@ -80,6 +80,7 @@ bcnormal(
   ProbParmDevice const& prob_parm,
   const amrex::GpuArray<amrex::Real, AMREX_SPACEDIM>& /*turb_fluc*/)
 {
+  // idir = 1,2 sgn = pm1 -> all the same as the outlet type 1
 
   if ((idir == 0) && (sgn == 1)) {
     // Inlet types:
