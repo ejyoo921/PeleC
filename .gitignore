@@ -44,3 +44,6 @@ __pycache__
 **/*.sh
 **/TE_rotor_submodule-local/
 **/*.npz
+**/plots*/
+**/job.*.err
+**/job.*.out
